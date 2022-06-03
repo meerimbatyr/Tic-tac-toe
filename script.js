@@ -88,3 +88,25 @@ const checkResultValidation = function () {
   //it will change player only if above conditions are not met and in case of continue
   playerChange();
 };
+
+
+
+// akzhol
+//This function will restart the game  with initial values
+const restartGame = function () {
+  gameActive = true;
+  currentPlayer = "X";
+  gameState = ["", "", "", "", "", "", "", "", ""];
+  statusDisplay.innerHTML = currentPlayerTurn();
+  cellElements.forEach((cell) => (cell.innerHTML = ""));
+  cellElements.forEach((cell) => (cell.style.backgroundColor = "#12213a"));
+};
+
+//Here we add add event listeners
+cellElements.forEach((cell, index) => {
+  cell.addEventListener("click", function (e) {
+    handleClick(e, index);
+  });
+});
+
+restartBtn.addEventListener("click", restartGame);
