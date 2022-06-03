@@ -54,6 +54,12 @@ const handleClick = function (e, index) {
   }
   checkResultValidation();
 };
+//We created a seperate function to change the player
+
+const playerChange = function () {
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
+  statusDisplay.innerHTML = currentPlayerTurn();
+};
 
 //This function will check the winning conditions
 const checkResultValidation = function () {
@@ -88,8 +94,6 @@ const checkResultValidation = function () {
   //it will change player only if above conditions are not met and in case of continue
   playerChange();
 };
-
-
 
 // akzhol
 //This function will restart the game  with initial values
