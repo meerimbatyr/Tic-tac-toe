@@ -55,8 +55,36 @@ const handleClick = function (e, index) {
   checkResultValidation();
 };
 
+//This function will check the winning conditions
+const checkResultValidation = function () {
+  let gameWon = false;
+  for (let i = 0; i < winningConditions.length; i++) {
+    const winCondition = winningConditions[i];
+    let a = gameState[winCondition[0]];
+    let b = gameState[winCondition[1]];
+    let c = gameState[winCondition[2]];
+    if (a === "" || b === "" || c === "") {
+      continue;
+    }
+    if (a === b && b === c) {
+      gameWon = true;
+      break;
+    }
+  }
 
+  if (gameWon === true) {
+    statusDisplay.innerHTML = winningMessage();
+    gameActive = false;
+    return;
+  }
 
+  let draw = !gameState.includes("");
+  if (draw === true) {
+    statusDisplay.innerHTML = drawMessage();
+    gameActive = false;
+    return;
+  }
 
-
-
+  //it will change player only if above conditions are not met and in case of continue
+  playerChange();
+};
