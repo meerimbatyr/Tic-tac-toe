@@ -37,6 +37,25 @@ const drawMessage = () => `Game ended in a draw!`;
 
 statusDisplay.innerHTML = currentPlayerTurn();
 
+/*Anara's code*/
+
+//We created a function that check if cell is empty or not
+//if not empty it will not return anything
+//if empty it will display the current player on clicked cell,will display the current players's turn text into displayStatus, and change the current player
+const handleClick = function (e, index) {
+  if (gameState[index] !== "" || !gameActive) {
+    return;
+  }
+  gameState[index] = currentPlayer;
+  const clickedCell = e.currentTarget;
+  clickedCell.innerText = currentPlayer;
+  if (currentPlayer === "X") {
+    clickedCell.style.backgroundColor = "#d86c23";
+  }
+  checkResultValidation();
+};
+
+
 
 
 
